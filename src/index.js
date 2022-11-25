@@ -11,19 +11,17 @@ getGraphicData();
 function setGraphicData(data) {
   const graphicUL = document.querySelector('.graphic-ul');
   data.forEach((dataItem) => {
-    const graphicLI = createDataGraphic(dataItem)
+    const graphicLI = createDataGraphic(dataItem);
       graphicUL.innerHTML += graphicLI;
-      const child = graphicUL.lastElementChild;
-      //animationGraphic(child)
   });
 
-  const teste = document.querySelectorAll('.graphic-column');
-  anima(teste)
+  const graphicColumn = document.querySelectorAll('.graphic-column');
+  animationGraphic(graphicColumn)
 
   const graphicList = document.querySelectorAll('.graphic-ul li');
   graphicList.forEach((graphicItem) => {
     graphicItem.addEventListener('mouseenter', showValueGraphic);
-    graphicItem.addEventListener('mouseleave', showValueGraphic2);
+    graphicItem.addEventListener('mouseleave', hideValueGraphic);
   });
 };
 
@@ -48,11 +46,11 @@ function showValueGraphic(e) {
   e.target.classList.add('active');
 };
 
-function showValueGraphic2(e) {
+function hideValueGraphic(e) {
   e.target.classList.remove('active');
 };
 
-function anima(graphicList) {
+function animationGraphic(graphicList) {
   graphicList.forEach((graphicItem) => {
     const porcentage = graphicItem.dataset.porcentage;
     let cont = 0;
