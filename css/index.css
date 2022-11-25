@@ -1,0 +1,205 @@
+html {
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: 'DM Sans', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+ol, ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*colors*/
+
+:root {
+  --cor-p1: hsl(10, 79%, 65%);
+  --cor-p2: hsl(186, 34%, 60%);
+  --cor-n1: hsl(25, 47%, 15%);
+  --cor-n2: hsl(28, 10%, 53%);
+  --cor-n3: hsl(27, 66%, 92%);
+  --cor-n4: hsl(33, 100%, 98%);
+}
+
+
+.content-bg {
+  background: var(--cor-n3);
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+
+}
+
+.my-balance {
+  background: var(--cor-p1);
+  color: var(--cor-n3);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-label {
+ margin-bottom: 2px;
+  font-size: 14px;
+}
+[data-balance] {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.details {
+  margin-top: 5px;
+}
+
+.circle-white {
+  display: inline-block;
+  border: 2px solid var(--cor-n3);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  position: relative;
+  left: 23px;
+}
+
+.circle-black {
+  display: inline-block;
+  border: 2px solid var(--cor-n1);
+  background: var(--cor-n1);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.data {
+  background: var(--cor-n4);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.data-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 60px;
+}
+
+.data-graphic {
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--cor-n3);
+}
+
+.graphic-ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.graphic-ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  animation: showGraphic 0.9s;
+}
+
+.graphic-column {
+  width: 45px;
+  background: var(--cor-p1);
+  border-radius: 4px;
+}
+
+.graphic-column.current {
+  background: var(--cor-p2);
+}
+
+.graphic-day {
+  font-size: 0.750rem;
+  color: var(--cor-n2);
+}
+
+
+.data-month {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.month-label {
+  font-size: 0.875rem;
+  color: var(--cor-n2);
+  margin-bottom: 5px;
+}
+
+.total-month {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.month-percentage {
+  text-align: right;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.last-month-label {
+  font-size: 0.875rem;
+  color: var(--cor-n2);
+  margin-bottom: 5px;
+}
+
+.graphic-amount {
+  background: var(--cor-n1);
+  color: var(--cor-n4);
+  font-size: 0.750rem;
+  padding: 8px;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: -40px;
+  white-space: nowrap;
+}
+
+.active .graphic-amount {
+  display: block;
+  animation: showAmount 0.3s;
+}
+
+@keyframes showAmount {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes showGraphic {
+  from {
+    opacity: 0;
+    height: 0%;
+  }
+  to {
+    opacity: 1;
+    height: 50% ;
+  }
+}
