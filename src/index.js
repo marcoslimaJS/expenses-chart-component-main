@@ -13,13 +13,18 @@ function setGraphicData(data) {
   data.forEach((dataItem) => {
     const graphicLI = createDataGraphic(dataItem)
       graphicUL.innerHTML += graphicLI;
+      const child = graphicUL.lastElementChild;
+      //animationGraphic(child)
   });
+
+  const teste = document.querySelectorAll('.graphic-column');
+  anima(teste)
 
   const graphicList = document.querySelectorAll('.graphic-ul li');
   graphicList.forEach((graphicItem) => {
     graphicItem.addEventListener('mouseenter', showValueGraphic);
-    graphicItem.addEventListener('mouseleave', showValueGraphic2)
-  })
+    graphicItem.addEventListener('mouseleave', showValueGraphic2);
+  });
 };
 
 function createDataGraphic({day, amount, porcentage}) {
@@ -31,7 +36,7 @@ function createDataGraphic({day, amount, porcentage}) {
   const dayElement = `
   <li>
     <div class="graphic-amount">$ ${amount}</div>
-    <div style="height:${porcentage}px" 
+    <div data-porcentage="${porcentage}" 
     class="graphic-column ${currentDay === day ? 'current' : ''}"></div>
     <span class="graphic-day">${day}</span>
   </li>
@@ -44,5 +49,17 @@ function showValueGraphic(e) {
 };
 
 function showValueGraphic2(e) {
-  e.target.classList.remove('active')
-}
+  e.target.classList.remove('active');
+};
+
+function anima(graphicList) {
+  graphicList.forEach((graphicItem) => {
+    const porcentage = graphicItem.dataset.porcentage;
+    let cont = 0;
+    let time = setInterval(() => {
+      cont += 1;
+      if(cont >= porcentage) clearInterval(time);
+      graphicItem.style.height = `${cont}px`;
+    }, 15);
+  });
+};

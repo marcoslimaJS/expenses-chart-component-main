@@ -109,6 +109,7 @@ img {
   align-items: end;
   gap: 15px;
   margin-bottom: 20px;
+  height: 140px;
 }
 
 .graphic-ul li {
@@ -117,10 +118,10 @@ img {
   align-items: center;
   gap: 5px;
   position: relative;
-  animation: showGraphic 0.9s;
 }
 
 .graphic-column {
+  height: 1px;
   width: 45px;
   background: var(--cor-p1);
   border-radius: 4px;
@@ -174,12 +175,13 @@ img {
   display: none;
   position: absolute;
   top: -40px;
+  z-index: 100;
   white-space: nowrap;
 }
 
 .active .graphic-amount {
   display: block;
-  animation: showAmount 0.3s;
+  animation: showAmount 0.3s forwards;
 }
 
 @keyframes showAmount {
@@ -193,13 +195,59 @@ img {
   }
 }
 
-@keyframes showGraphic {
-  from {
-    opacity: 0;
-    height: 0%;
+@media (max-width: 500px) {
+  .data {
+    padding: 15px;
   }
-  to {
-    opacity: 1;
-    height: 50% ;
+  .my-balance {
+    padding: 15px;
+  }
+  .graphic-column {
+    width: 30px;
+  }
+  .data-title {
+    font-size: 1.2rem;
+  }
+  .month-label {
+    font-size: 0.750rem;
+  }
+  .total-month {
+    font-size: 1.5rem;
+  }
+  .last-month-label {
+    font-size: 0.750rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .data {
+    padding: 8px;
+  }
+  .my-balance {
+    padding: 8px;
+  }
+  .data-title{
+    font-size: 1rem;
+  }
+  .graphic-ul {
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .graphic-column {
+    width: 25px;
+  }
+  .graphic-amount {
+    font-size: 0.600rem;
+    padding: 5px;
+    top: -30px;
+  }
+  .month-label {
+    font-size: 0.700rem;
+  }
+  .total-month {
+    font-size: 1.3rem;
+  }
+  .last-month-label {
+    font-size: 0.700rem;
   }
 }
